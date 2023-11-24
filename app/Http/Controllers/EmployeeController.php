@@ -58,7 +58,7 @@ class EmployeeController extends Controller
 
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
-            $filename = 'FTO' . date('Ymd') . '.' . $foto->getClientOriginalExtension();
+            $filename = 'FTO' . date('Ymd') . rand() . '.' . $foto->getClientOriginalExtension();
             $foto->storeAs('public/file/' . $filename);
         }
 
@@ -129,7 +129,7 @@ class EmployeeController extends Controller
         if ($request->hasFile('foto')) {
             Storage::delete('public/file/' . $employee->foto);
             $foto = $request->file('foto');
-            $filename = 'FTO' . date('Ymd') . '.' . $foto->getClientOriginalExtension();
+            $filename = 'FTO' . date('Ymd') . rand() . '.' . $foto->getClientOriginalExtension();
             $foto->storeAs('public/file/' . $filename);
 
             $employee->update([
